@@ -13,29 +13,12 @@ public class Firma {
     }
 
     public void wyswietlPodsumowanie() {
-        double kwotaOpodatkowana = zsumujPrzychody();
-
-        if (formaOpodatkowania instanceof PodatekLiniowy) {
-            kwotaOpodatkowana = wyliczDochod();
-        }
-        if (formaOpodatkowania instanceof PodatekWgSkali) {
-            kwotaOpodatkowana = wyliczDochod();
-        }
-
         System.out.printf("======= Firma: %s ===========\n", nazwa);
-        System.out.printf("Forma opodatkowania: %s\n", formaOpodatkowania.getClass().getSimpleName());
-        System.out.printf("Suma przychodów: %.2f zł\n", zsumujPrzychody());
-        System.out.printf("Suma wydatków: %.2f zł\n", zsumujWydatki());
-        System.out.printf("Podatek do zapłacenia: %.2f zł", formaOpodatkowania.wyliczPodatek(kwotaOpodatkowana));
+        System.out.printf("Forma opodatkowania: %s\n", formaOpodatkowania.getName());
+        System.out.printf("Suma przychodów: %.2f zł\n", przychody);
+        System.out.printf("Suma wydatków: %.2f zł\n", wydatki);
+        System.out.printf("Podatek do zapłacenia: %.2f zł", formaOpodatkowania.wyliczPodatek(przychody, wydatki));
         System.out.print("\n\n");
-    }
-
-    private double zsumujWydatki() {
-        return wydatki;
-    }
-
-    private double zsumujPrzychody() {
-        return przychody;
     }
 
     public void dodajPrzychod(String nazwa, double wartosc) {
@@ -44,9 +27,5 @@ public class Firma {
 
     public void dodajWydatek(String nazwa, double wartosc) {
         wydatki += wartosc;
-    }
-
-    private double wyliczDochod() {
-        return przychody - wydatki;
     }
 }
