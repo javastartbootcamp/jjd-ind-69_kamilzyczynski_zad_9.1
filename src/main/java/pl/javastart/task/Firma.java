@@ -4,6 +4,8 @@ public class Firma {
 
     private String nazwa;
     private FormaOpodatkowania formaOpodatkowania;
+    private double przychody;
+    private double wydatki;
 
     public Firma(String nazwa, FormaOpodatkowania formaOpodatkowania) {
         this.nazwa = nazwa;
@@ -11,29 +13,19 @@ public class Firma {
     }
 
     public void wyswietlPodsumowanie() {
-        double sumaPrzychodow = zsumujPrzychody();
-
         System.out.printf("======= Firma: %s ===========\n", nazwa);
-        System.out.printf("Forma opodatkowania: %s\n", "TODO");
-        System.out.printf("Suma przychodów: %.2f zł\n", sumaPrzychodow);
-        System.out.printf("Suma wydatków: %.2f zł\n", zsumujWydatki());
-        System.out.printf("Podatek do zapłacenia: %.2f zł", formaOpodatkowania.wyliczPodatek(sumaPrzychodow));
+        System.out.printf("Forma opodatkowania: %s\n", formaOpodatkowania.getName());
+        System.out.printf("Suma przychodów: %.2f zł\n", przychody);
+        System.out.printf("Suma wydatków: %.2f zł\n", wydatki);
+        System.out.printf("Podatek do zapłacenia: %.2f zł", formaOpodatkowania.wyliczPodatek(przychody, wydatki));
         System.out.print("\n\n");
     }
 
-    private double zsumujWydatki() {
-        return 0;
-    }
-
-    private double zsumujPrzychody() {
-        return 0;
-    }
-
     public void dodajPrzychod(String nazwa, double wartosc) {
-        // TODO
+        przychody += wartosc;
     }
 
     public void dodajWydatek(String nazwa, double wartosc) {
-        // TODO
+        wydatki += wartosc;
     }
 }

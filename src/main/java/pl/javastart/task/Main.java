@@ -3,10 +3,10 @@ package pl.javastart.task;
 public class Main {
 
     public static void main(String[] args) {
-        Firma firma = new Firma("JanuszPOL", new NaCzarno());
+        Firma firma = new Firma("JanuszPOL", new PodatekWgSkali());
 
-        firma.dodajPrzychod("Remont Mieszkania", 20_000);
-        firma.dodajWydatek("Gładzie i farby", 1_000);
+        firma.dodajPrzychod("Remont Mieszkania", 150_000);
+        firma.dodajWydatek("Gładzie i farby", 20_000);
 
         firma.wyswietlPodsumowanie();
 
